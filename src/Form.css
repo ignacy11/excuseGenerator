@@ -1,0 +1,7 @@
+form {
+    display: flex;
+    flex-direction: column;
+    background-color: cyan;
+    display: none;
+    /* https://stackoverflow.com/questions/41628247/how-to-include-css-file-in-tsx-typescript */
+}
