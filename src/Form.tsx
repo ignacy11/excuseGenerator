@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "./Form.css"
 
 interface FormData {
     name: string;

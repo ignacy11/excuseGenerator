@@ -1,7 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Special+Gothic&display=swap');
+
+body, html {
+    font-family: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#root {
+    width: 42%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
 form {
     display: flex;
     flex-direction: column;
-    background-color: cyan;
-    display: none;
-    /* https://stackoverflow.com/questions/41628247/how-to-include-css-file-in-tsx-typescript */
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 2.1rem 7rem;
+    box-sizing: border-box;
+
+    /* kolory i stylizacja */
+    border: 6px solid #353535;
+    border-radius: 10px;
+    background-color: #686e73;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin: 0.7rem 0;
+}
+
+label span {
+    margin-bottom: 0.35rem;
+
+    color: #171717;
+    font-size: 1.25em;
+}
+
+input, select {
+    height: 1.8rem;
+    font-size: 1.2em;
+}
+
+.excuse-is-important {
+    display: flex;
+    flex-direction: row;
+}
+
+.excuse-is-important input[type=checkbox] {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-left: 1rem;
 }
