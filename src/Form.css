@@ -26,31 +26,41 @@ form {
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 2.1rem 7rem;
+    padding: 1.5rem 4.7rem 2.4rem;
     box-sizing: border-box;
 
     /* kolory i stylizacja */
-    border: 6px solid #353535;
+    border: 6px solid #cfcfcf;
     border-radius: 10px;
-    background-color: #686e73;
+    background: #8f8f8f;
+    background: linear-gradient(180deg, rgba(143, 143, 143, 1) 0%, rgba(77, 77, 77, 1) 100%);
 }
 
 label {
     display: flex;
     flex-direction: column;
-    margin: 0.7rem 0;
+    margin: 0.5rem 0;
 }
 
 label span {
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
 
-    color: #171717;
+    color: #eaeaea;
     font-size: 1.25em;
 }
 
-input, select {
+input, select, textarea {
+    width: 100%;
     height: 1.8rem;
     font-size: 1.2em;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    border-radius: 0.2rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: #515151;
 }
 
 .excuse-is-important {
@@ -59,7 +69,7 @@ input, select {
 }
 
 .excuse-is-important input[type=checkbox] {
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 1.4rem;
+    width: 1.4rem;
     margin-left: 1rem;
 }

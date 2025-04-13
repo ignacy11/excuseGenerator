@@ -28,7 +28,7 @@ const Form = () => {
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                Imię:
+                <span>Imię:</span>
                 <input type="text"
                        name="name"
                        value={formData.name}
@@ -37,7 +37,7 @@ const Form = () => {
             </label>
 
             <label>
-                Powód wymówki:
+                <span>Powód wymówki:</span>
                 <input type="text"
                        name="excuseReason"
                        value={formData.excuseReason}
@@ -46,18 +46,18 @@ const Form = () => {
             </label>
 
             <label>
-                Poziom wiarygodności:
+                <span>Poziom wiarygodności:</span>
                 <input type="range"
                        min={0}
                        max={5}
-                       value={0}
+                       defaultValue={0}
                        name="levelOfCredibility"
                        onChange={handleChange}
                 />
             </label>
 
             <label>
-                Data:
+                <span>Data:</span>
                 <input type="date"
                        name="dateOfEvent"
                        value={formData.dateOfEvent}
@@ -66,7 +66,7 @@ const Form = () => {
             </label>
 
             <label>
-                Poziom kreatywności:
+                <span>Poziom kreatywności:</span>
                 <select name="creativityLevel"
                         value={formData.creativityLevel}
                         onChange={handleChange}
@@ -80,15 +80,15 @@ const Form = () => {
             </label>
 
             <label>
-                Dodatkowe szczegóły:
+                <span>Dodatkowe szczegóły:</span>
                 <textarea name="extraDetails"
                           value={formData.extraDetails}
                           onChange={handleChange}
                 />
             </label>
 
-            <label>
-                Czy wymówka jest pilna?
+            <label className={"excuse-is-important"}>
+                <span>Czy wymówka jest pilna?</span>
                 <input type="checkbox"
                        name="excuseIsImportant"
                        checked={formData.excuseIsImportant}
