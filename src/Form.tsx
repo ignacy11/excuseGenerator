@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import "./Form.css"
+import "./css/Form.css"
 
-interface FormData {
+export interface FormData {
     name: string;
     excuseReason: string;
     levelOfCredibility: number;
@@ -11,18 +11,36 @@ interface FormData {
     excuseIsImportant: boolean;
 }
 
-const Form = () => {
-    const [formData, setFormData] = useState<FormData>({name:"", excuseReason:"", levelOfCredibility:0, dateOfEvent:"", creativityLevel:0, extraDetails:"", excuseIsImportant:false});
+interface FormProps {
+    onSubmit: (data: FormData) => void;
+}
 
-    function handleSubmit(e: React.FormEvent) {
-        e.preventDefault()
-        console.log("Submitted Data: ", formData)
-    }
+const Form = ({ onSubmit }: FormProps) => {
+    const [formData, setFormData] = useState<FormData>({
+        name: "",
+        excuseReason: "",
+        levelOfCredibility: 0,
+        dateOfEvent: "",
+        creativityLevel: 0,
+        extraDetails: "",
+        excuseIsImportant: false,
+    });
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-        console.log(`event.target.value: ${event.target.value}, event.target.name: ${event.target.name}`)
-        const {name, value, type, checked} = event.target as HTMLInputElement;
-        setFormData(prevState => ({...prevState, [name]: type === "checkbox" ? checked : value}));
+    const handleChange = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        const {name, value, type} = event.target;
+        const checked = type === "checkbox" ? (event.target as HTMLInputElement).checked : undefined;
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: type === "checkbox" ? checked : value
+        }));
+    };
+
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        onSubmit(formData);
     }
 
     return (
@@ -50,8 +68,8 @@ const Form = () => {
                 <input type="range"
                        min={0}
                        max={5}
-                       defaultValue={0}
                        name="levelOfCredibility"
+                       value={formData.levelOfCredibility}
                        onChange={handleChange}
                 />
             </label>
@@ -60,7 +78,7 @@ const Form = () => {
                 <span>Data:</span>
                 <input type="date"
                        name="dateOfEvent"
-                       value={formData.dateOfEvent}
+                       value={formData.dateOfEvent?.toString()}
                        onChange={handleChange}
                 />
             </label>
@@ -70,20 +88,20 @@ const Form = () => {
                 <select name="creativityLevel"
                         value={formData.creativityLevel}
                         onChange={handleChange}
-                        >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
                 </select>
             </label>
 
             <label>
                 <span>Dodatkowe szczegóły:</span>
                 <textarea name="extraDetails"
-                          value={formData.extraDetails}
-                          onChange={handleChange}
+                         value={formData.extraDetails}
+                         onChange={handleChange}
                 />
             </label>
 
@@ -98,7 +116,7 @@ const Form = () => {
 
             <button type="submit">Wyślij</button>
         </form>
-    )
-}
+    );
+};
 
 export default Form;
