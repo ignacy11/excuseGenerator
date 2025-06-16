@@ -6,17 +6,15 @@ import "./css/App.css"
 function App() {
     const [excusesList, setExcusesList] = useState<FormData[]>([])
 
-    const addExcuseToList = (formData: FormData) => {
-        setExcusesList((prevState) => [...prevState, formData])
+    const addExcuseToList = (newExcuse: FormData) => {
+        setExcusesList((prevExcuses) => [...prevExcuses, newExcuse])
     }
 
     return (
-        <>
-            <main className={"app-content"}>
-                <Form onSubmit={addExcuseToList}/>
-                <GeneratedExcuses excusesList={excusesList}/>
-            </main>
-        </>
+        <main className={"app-content"}>
+            <Form addExcuseToList={addExcuseToList} />
+            <GeneratedExcuses excusesList={excusesList} />
+        </main>
     )
 }
 

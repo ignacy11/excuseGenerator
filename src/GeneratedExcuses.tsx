@@ -16,7 +16,7 @@ const GeneratedExcuses = ({ excusesList }: GeneratedExcusesProps) => {
                             niestety spóźniłem/am się ponieważ {excuse.excuseReason},
                             poziom wiarygodności tej wymówki to {excuse.levelOfCredibility},
                             zdarzenie miało miejsce {excuse.dateOfEvent?.toLocaleString()},
-                            kreatywność {excuse.creativityLevel},
+                            kreatywność {excuse.creativityLevel}.
                             <br/>
                             dodatkowe szczegóły: {excuse.extraDetails},
                             <br/>

@@ -5,26 +5,28 @@ export interface FormData {
     name: string;
     excuseReason: string;
     levelOfCredibility: number;
-    dateOfEvent: string | readonly string[] | number | undefined;
+    dateOfEvent: string;
     creativityLevel: number;
     extraDetails: string;
     excuseIsImportant: boolean;
 }
 
 interface FormProps {
-    onSubmit: (data: FormData) => void;
+    addExcuseToList: (data: FormData) => void;
 }
 
-const Form = ({ onSubmit }: FormProps) => {
-    const [formData, setFormData] = useState<FormData>({
-        name: "",
-        excuseReason: "",
-        levelOfCredibility: 0,
-        dateOfEvent: "",
-        creativityLevel: 0,
-        extraDetails: "",
-        excuseIsImportant: false,
-    });
+const InitialFormState: FormData = {
+    name: "",
+    excuseReason: "",
+    levelOfCredibility: 0,
+    dateOfEvent: "",
+    creativityLevel: 0,
+    extraDetails: "",
+    excuseIsImportant: false
+}
+
+const Form = ({ addExcuseToList }: FormProps) => {
+    const [formData, setFormData] = useState<FormData>(InitialFormState)
 
     const handleChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -40,7 +42,8 @@ const Form = ({ onSubmit }: FormProps) => {
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        onSubmit(formData);
+        addExcuseToList(formData);
+        setFormData(InitialFormState);
     }
 
     return (
